@@ -1,11 +1,13 @@
 import React from "react";
 import { mockData } from "./assets/mockData";
+import MainPage from "./pages/MainPage";
 
 import "./App.css";
 
 function App() {
-  console.log(mockData);
-  return <div className="App"></div>;
+  return <div className="App">
+    <MainPage mockData={mockData}></MainPage>
+  </div>;
 }
 
 export default App;
