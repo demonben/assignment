@@ -6,12 +6,29 @@ import "./App.css";
 
 function App() {
   const [data, setData] = useState();
+  const [option, setOption] = useState("animals");
 
+  const options = [
+    { value: "animals", label: "animals" },
+    { value: "Sport", label: "Sport" },
+    { value: "work", label: "work" },
+  ];
+  const selectHandler = (e) => {
+    setOption(e.value);
+  };
   useEffect(() => {
-    getData().then((data) => setData(data));
-  }, []);
+    getData(option).then((data) => setData(data));
+  }, [option]);
   return (
-    <div className="App">{data && <MainPage mockData={data}></MainPage>}</div>
+    <div className="App">
+      {data && (
+        <MainPage
+          data={data}
+          options={options}
+          selectHandler={selectHandler}
+        ></MainPage>
+      )}
+    </div>
   );
 }
 
