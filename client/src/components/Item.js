@@ -1,9 +1,13 @@
-import React from 'react'
+import React from "react";
 
-const Item = () => {
+const Item = ({ item }) => {
+  const { tags, previewURL } = item;
   return (
-    <div>Item</div>
-  )
-}
+    <div>
+      <h1>{tags}</h1>
+      <img src={previewURL} alt="img"></img>
+    </div>
+  );
+};
 
-export default Item
+export default Item;
