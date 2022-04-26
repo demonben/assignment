@@ -6,6 +6,7 @@ app.get('/', function (req, res) {
 })
 
 const port = 5001
-app.listen(port, () => {
-    console.log(`server is listening ${port}...`);
+const host = "0.0.0.0"
+app.listen(port, host, () => {
+    console.log(`The server is listening on http://${host}:${port}`);
   });
