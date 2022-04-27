@@ -11,7 +11,6 @@ router.get("/:option", async (req, res, next) => {
       res.send({ message: "no data" });
       return;
     }
-    console.log(data);
     res.send({ data });
   } catch (err) {
     next(err);
