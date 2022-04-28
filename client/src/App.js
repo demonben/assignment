@@ -16,9 +16,11 @@ function App() {
   const selectHandler = (e) => {
     setOption(e.value);
   };
+  
   useEffect(() => {
     getData(option).then((data) => setData(data));
   }, [option]);
+
   return (
     <div className="App">
       {data && (
