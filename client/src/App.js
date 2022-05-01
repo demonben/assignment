@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from "react";
 import MainPage from "./pages/MainPage";
-import { useSelector, useDispatch } from "react-redux";
-import { getDataAsync } from "./redux/dataSlice";
 import { getData } from "./lib/api";
 import "./App.css";
 
 function App() {
-  const dispatch = useDispatch();
+
   const [data, setData] = useState();
   const [option, setOption] = useState("animals");
-  const dataFromStore = useSelector((state) => state.data);
+
 
   const options = [
     { value: "animals", label: "animals" },
@@ -21,9 +19,8 @@ function App() {
   };
 
   useEffect(() => {
-    dispatch(getDataAsync());
     getData(option).then((data) => setData(data));
-  }, [option, dispatch]);
+  }, [option]);
 
   return (
     <div className="App">
