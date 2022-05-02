@@ -2,13 +2,12 @@ import React from "react";
 import List from "../components/List";
 import Select from "react-select";
 
-const MainPage = ({ data, options, selectHandler }) => {
-  const { hits } = data;
+const MainPage = ({ options, selectHandler }) => {
 
   return (
     <div>
       <Select options={options} onChange={selectHandler} />
-      <List listData={hits}></List>;
+      <List />
     </div>
   );
 };
