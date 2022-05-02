@@ -3,7 +3,7 @@ import Modal from "react-modal";
 
 const Item = ({ item }) => {
   const [modalIsOpen, setIsOpen] = useState(false);
-  const { tags, previewURL, views, downloads, collections } = item;
+  const { tags, previewURL,webformatURL, views, downloads, collections } = item;
 
   function openModal() {
     setIsOpen(true);
@@ -27,6 +27,7 @@ const Item = ({ item }) => {
         <p>views: {views}</p>
         <p>downloads: {downloads}</p>
         <p>collections: {collections}</p>
+        <img src={webformatURL} ></img>
       </Modal>
     </div>
   );
