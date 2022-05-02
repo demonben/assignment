@@ -5,13 +5,12 @@ const BaseUrl =
 
 async function fetchData(option, page) {
   const perPage = 9;
-  let pageNumber = page;
-  const response = await axios.get(`${BaseUrl}=${option}&per_page=${perPage}`);
+  const response = await axios.get(`${BaseUrl}=${option}&per_page=${perPage}&page=${page}`);
   return response.data;
 }
 
-const gettingData = (option) => {
-  let data = fetchData(option);
+const gettingData = (option,page) => {
+  let data = fetchData(option,page);
   return data;
 };
 
