@@ -3,7 +3,7 @@ import MainPage from "./pages/MainPage";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import "./App.css";
-import { setData } from "./redux/actions/dataActions";
+import { setData,selectOption } from "./redux/actions/dataActions";
 
 function App() {
   const [option, setOption] = useState("animals");
@@ -15,6 +15,7 @@ function App() {
     { value: "work", label: "work" },
   ];
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const setInStoreGetedData = async (option) => {
     const response = await axios.get(`http://0.0.0.0:5001/data/${option}`);
     dispatch(setData(response.data));
@@ -25,7 +26,7 @@ function App() {
   };
   useEffect(() => {
     setInStoreGetedData(option);
-  }, [option]);
+  }, [option, setInStoreGetedData]);
 
   return (
     <div className="App">
