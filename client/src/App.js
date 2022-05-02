@@ -1,35 +1,39 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useLayoutEffect } from "react";
 import MainPage from "./pages/MainPage";
-import { getData } from "./lib/api";
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import { getData, SetInStoreGetedData } from "./lib/api";
 import "./App.css";
+import { useSelector } from "react-redux";
+import { setData } from "./redux/actions/dataActions";
 
 function App() {
-
-  const [data, setData] = useState();
+  const [data, setData1] = useState();
   const [option, setOption] = useState("animals");
-
+  const dispatch = useDispatch();
 
   const options = [
     { value: "animals", label: "animals" },
     { value: "Sport", label: "Sport" },
     { value: "work", label: "work" },
   ];
+
+  const setInStoreGetedData = async (option) => {
+    const response = await axios.get(`http://0.0.0.0:5001/data/${option}`);
+    dispatch(setData(response.data));
+  };
+
   const selectHandler = (e) => {
     setOption(e.value);
   };
-
   useEffect(() => {
-    getData(option).then((data) => setData(data));
+    setInStoreGetedData(option);
   }, [option]);
 
   return (
     <div className="App">
-      {data && (
-        <MainPage
-          data={data}
-          options={options}
-          selectHandler={selectHandler}
-        ></MainPage>
+      {!data && (
+        <MainPage options={options} selectHandler={selectHandler}></MainPage>
       )}
     </div>
   );
