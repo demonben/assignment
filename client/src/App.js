@@ -1,14 +1,11 @@
-import React, { useEffect, useState, useLayoutEffect } from "react";
+import React, { useEffect, useState } from "react";
 import MainPage from "./pages/MainPage";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { getData, SetInStoreGetedData } from "./lib/api";
 import "./App.css";
-import { useSelector } from "react-redux";
 import { setData } from "./redux/actions/dataActions";
 
 function App() {
-  const [data, setData1] = useState();
   const [option, setOption] = useState("animals");
   const dispatch = useDispatch();
 
@@ -32,9 +29,7 @@ function App() {
 
   return (
     <div className="App">
-      {!data && (
-        <MainPage options={options} selectHandler={selectHandler}></MainPage>
-      )}
+      <MainPage options={options} selectHandler={selectHandler}></MainPage>
     </div>
   );
 }
