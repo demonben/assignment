@@ -7,10 +7,7 @@ import Select from "react-select";
 
 const MainPage = ({ options, selectHandler, page, setPage }) => {
   const dispatch = useDispatch();
-  let option = "animals";
-  const prevPageHandler = () => {
-    setPage(page - 1);
-  };
+  let optionDefault = "animals";
 
   const setInStoreGetedData = async (option, page) => {
     const response = await axios.get(
@@ -19,18 +16,21 @@ const MainPage = ({ options, selectHandler, page, setPage }) => {
     dispatch(setData(response.data));
   };
   useEffect(() => {
-    setInStoreGetedData(option, page);
+    setInStoreGetedData(optionDefault, 56);
   }, [page]);
 
   const nextPageHandler = () => {
     setPage(page + 1);
   };
+  const prevPageHandler = () => {
+    setPage(page - 1);
+  };
   return (
     <div>
       <Select options={options} onChange={selectHandler} />
       <List />
-      <button onClick={prevPageHandler}>PREV</button>
-      <button onClick={nextPageHandler}>NEXT</button>
+      {page <= 55 && <button onClick={nextPageHandler}>NEXT</button>}
+      {page > 1 && <button onClick={prevPageHandler}>PREV</button>}
     </div>
   );
 };

@@ -17,8 +17,10 @@ function App() {
   ];
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const setInStoreGetedData = async (option,page) => {
-    const response = await axios.get(`http://0.0.0.0:5001/data/${option}/${page}`);
+  const setInStoreGetedData = async (option, page) => {
+    const response = await axios.get(
+      `http://0.0.0.0:5001/data/${option}/${page}`
+    );
     dispatch(setData(response.data));
   };
 
@@ -26,12 +28,17 @@ function App() {
     setOption(e.value);
   };
   useEffect(() => {
-    setInStoreGetedData(option,page);
+    setInStoreGetedData(option, page);
   }, [option, page, setInStoreGetedData]);
 
   return (
     <div className="App">
-      <MainPage options={options} selectHandler={selectHandler} page={page} setPage={setPage}></MainPage>
+      <MainPage
+        options={options}
+        selectHandler={selectHandler}
+        page={page}
+        setPage={setPage}
+      ></MainPage>
     </div>
   );
 }
