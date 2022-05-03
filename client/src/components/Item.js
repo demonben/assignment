@@ -14,8 +14,8 @@ const Item = ({ item }) => {
   }
 
   return (
-    <div>
-      <button onClick={openModal}>
+    <div className="listItem">
+      <button onClick={openModal} className="moduleItemBtn">
         <h1>{tags}</h1>
         <img src={previewURL} alt="img"></img>
       </button>

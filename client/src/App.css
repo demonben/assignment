@@ -37,3 +37,15 @@
     transform: translateY(0px);
   }
 }
+
+.list{
+  display: flex;
+  flex-wrap: wrap;
+}
+.listItem{
+  margin: 10px;
+}
+.moduleItemBtn{
+  width: 250px;
+  height: 250px;
+}
