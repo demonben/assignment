@@ -12,3 +12,9 @@ export const setIsFetching = (isFetching)=>{
         payload: isFetching,
     }
 }
+export const setPageNumber = (pageNumber)=>{
+    return {
+        type: ActionTypes.SET_CURRENT_PAGE,
+        payload: pageNumber,
+    }
+}
