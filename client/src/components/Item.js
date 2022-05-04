@@ -6,6 +6,8 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "react-modal";
+import ClearIcon from '@mui/icons-material/Clear';
+
 
 const Item = ({ item }) => {
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -43,6 +45,7 @@ const Item = ({ item }) => {
             contentLabel="test"
             ariaHideApp={false}
           >
+          <ClearIcon onClick={closeModal}></ClearIcon>
             <Typography  variant="h6" component="h2">
               {tags}
             </Typography>
@@ -57,6 +60,12 @@ const Item = ({ item }) => {
             </Typography>
             <Typography  sx={{ mt: 2 }}>
             views: {views}
+            </Typography>
+            <Typography  sx={{ mt: 2 }}>
+            downloads: {downloads}
+            </Typography>
+            <Typography  sx={{ mt: 2 }}>
+            collections: {collections}
             </Typography>
             <CardMedia
           component="img"
