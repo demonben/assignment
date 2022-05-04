@@ -1,14 +1,20 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { setPageNumber } from "../redux/actions/dataActions";
 
-const Buttons = (page, setPage) => {
-  let firstPage = 1;
-  let lastPage = 55;
+const Buttons = () => {
+  const page = useSelector((state) => state.store.page);
+  const dispatch = useDispatch();
+
+  let FIRST_PAGE = 1;
+  let LAST_PAGE = 55;
 
   const nextPageHandler = () => {
-    setPage(page + 1);
+    dispatch(setPageNumber(page + 1));
   };
   const prevPageHandler = () => {
-    setPage(page - 1);
+    dispatch(setPageNumber(page - 1))
   };
   return (
     <div>
@@ -17,5 +23,10 @@ const Buttons = (page, setPage) => {
     </div>
   );
 };
-
+      {/* {page <= lastPage && !isLoading && (
+          <button onClick={nextPageHandler}>NEXT</button>
+        )}
+        {page > firstPage && !isLoading && (
+          <button onClick={prevPageHandler}>PREV</button>
+        )} */}
 export default Buttons;
