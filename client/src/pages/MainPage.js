@@ -37,14 +37,8 @@ const MainPage = ({ options, selectHandler, page, setPage }) => {
     <div>
       <Select options={options} onChange={selectHandler} />
       <List />
-      <Buttons setPage={setPage} page={page}></Buttons>
       <div>
-        {/* {page <= lastPage && !isLoading && (
-          <button onClick={nextPageHandler}>NEXT</button>
-        )}
-        {page > firstPage && !isLoading && (
-          <button onClick={prevPageHandler}>PREV</button>
-        )} */}
+        <Buttons/>
         <Loader />
       </div>
     </div>
