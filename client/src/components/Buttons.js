@@ -2,6 +2,8 @@ import React from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { setPageNumber, setData } from "../redux/actions/dataActions";
+import Button from "@mui/material/Button";
+import Stack from "@mui/material/Stack";
 
 const Buttons = ({ setLoading }) => {
   const page = useSelector((state) => state.store.page);
@@ -34,8 +36,19 @@ const Buttons = ({ setLoading }) => {
   };
   return (
     <div>
-      {page <= LAST_PAGE && <button onClick={nextPageHandler}>NEXT</button>}
-      {page > FIRST_PAGE && <button onClick={prevPageHandler}>PREV</button>}
+      <Stack spacing={2} direction="row" justifyContent="center"
+>
+        {page <= LAST_PAGE && (
+          <Button onClick={nextPageHandler} variant="contained">
+            NEXT
+          </Button>
+        )}
+        {page > FIRST_PAGE && (
+          <Button onClick={prevPageHandler} variant="contained">
+            PREV
+          </Button>
+        )}
+      </Stack>
     </div>
   );
 };
