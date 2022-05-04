@@ -2,48 +2,50 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { setData } from "../redux/actions/dataActions";
+import Buttons from "../components/Buttons";
 import List from "../components/List";
+import Loader from "../components/Loader";
 import Select from "react-select";
-import { Hearts } from "react-loader-spinner";
 
 const MainPage = ({ options, selectHandler, page, setPage }) => {
   const [isLoading, setLoading] = useState(false);
   const dispatch = useDispatch();
+  let firstPage = 1;
+  let lastPage = 55;
   let optionDefault = "animals";
 
   const setInStoreGetedData = async (option, page) => {
     setLoading(true);
+    try {
+      const response = await axios.get(
+        `http://0.0.0.0:5001/data/${option}/${page}`
+      );
+      dispatch(setData(response.data));
+    } catch (e) {
+      console.log(e);
+    }
 
-    const response = await axios.get(
-      `http://0.0.0.0:5001/data/${option}/${page}`
-    );
-    dispatch(setData(response.data));
     setLoading(false);
   };
   useEffect(() => {
     setInStoreGetedData(optionDefault, page);
   }, [page]);
 
-  const nextPageHandler = () => {
-    setPage(page + 1);
-  };
-  const prevPageHandler = () => {
-    setPage(page - 1);
-  };
+  // TODO: MAKE COMPONENT WITH BUTTONS
+  // TODO: REMOVE DEFINE WITH CAPITALS_ NUMBERS
   return (
     <div>
       <Select options={options} onChange={selectHandler} />
       <List />
-      <div >
-        {page <= 55 && !isLoading && (
+      <Buttons setPage={setPage} page={page}></Buttons>
+      <div>
+        {/* {page <= lastPage && !isLoading && (
           <button onClick={nextPageHandler}>NEXT</button>
         )}
-        {page > 1 && !isLoading && (
+        {page > firstPage && !isLoading && (
           <button onClick={prevPageHandler}>PREV</button>
-        )}
-        <div className="loader">
-        {isLoading && <Hearts color="red" height={80} width={80} />}
-        </div>
+        )} */}
+        <Loader />
       </div>
     </div>
   );
