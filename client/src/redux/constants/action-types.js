@@ -1,5 +1,6 @@
 export const ActionTypes = {
     SET_DATA: "SET_DATA",
     SELECTED_DATA_ITEM: "SELECTED_DATA_ITEM",
+    SET_IS_FETCHING:"SET_IS_FETCHING"
   };
   

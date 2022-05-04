@@ -6,10 +6,9 @@ export const setData = (data)=>{
         payload: data,
     }
 }
-
-export const selectedData = (dataItem)=>{
+export const setIsFetching = (isFetching)=>{
     return {
-        type: ActionTypes.SELECTED_DATA_ITEM,
-        payload: dataItem,
+        type: ActionTypes.SET_IS_FETCHING,
+        payload: isFetching,
     }
 }
