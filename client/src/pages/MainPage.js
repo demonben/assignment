@@ -32,10 +32,7 @@ const MainPage = ({ options, selectHandler, page }) => {
     <div>
       <Select options={options} onChange={selectHandler} />
       <List />
-      <div>
-        <Buttons />
-        <Loader />
-      </div>
+      <div>{!isLoading ? <Buttons setLoading={setLoading} /> : <Loader />}</div>
     </div>
   );
 };

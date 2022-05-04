@@ -3,15 +3,13 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { setPageNumber, setData } from "../redux/actions/dataActions";
 
-const Buttons = () => {
+const Buttons = ({ setLoading }) => {
   const page = useSelector((state) => state.store.page);
   const dispatch = useDispatch();
   let optionDefault = "animals";
 
   let FIRST_PAGE = 1;
   let LAST_PAGE = 55;
-  // TODO DO FETCH REQ AND SET NEW DATA
-  // TODO REFACTOR FETCH REQ NOT FOLLOW DRY
 
   const nextPageHandler = () => {
     dispatch(setPageNumber(page + 1));
@@ -24,6 +22,7 @@ const Buttons = () => {
 
   const setInStoreGetedData = async (option, page) => {
     try {
+      setLoading(true);
       const response = await axios.get(
         `http://0.0.0.0:5001/data/${option}/${page}`
       );
@@ -31,6 +30,7 @@ const Buttons = () => {
     } catch (e) {
       console.log(e);
     }
+    setLoading(false);
   };
   return (
     <div>
