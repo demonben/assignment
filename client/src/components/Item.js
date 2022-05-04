@@ -9,7 +9,7 @@ import Modal from "react-modal";
 
 const Item = ({ item }) => {
   const [modalIsOpen, setIsOpen] = useState(false);
-  const { tags, previewURL, webformatURL, views, downloads, collections } =
+  const { tags, previewURL, webformatURL, views, downloads, collections,id,likes,comments } =
     item;
 
   function openModal() {
@@ -43,7 +43,26 @@ const Item = ({ item }) => {
             contentLabel="test"
             ariaHideApp={false}
           >
-            
+            <Typography  variant="h6" component="h2">
+              {tags}
+            </Typography>
+            <Typography  sx={{ mt: 2 }}>
+            id: {id}
+            </Typography>
+            <Typography  sx={{ mt: 2 }}>
+            likes: {likes}
+            </Typography>
+            <Typography  sx={{ mt: 2 }}>
+            comments: {comments}
+            </Typography>
+            <Typography  sx={{ mt: 2 }}>
+            views: {views}
+            </Typography>
+            <CardMedia
+          component="img"
+          alt="photo"
+          image={webformatURL}
+        />
           </Modal>
         </CardActions>
       </Card>
