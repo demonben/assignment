@@ -7,10 +7,9 @@ import List from "../components/List";
 import Loader from "../components/Loader";
 import Select from "react-select";
 
-const MainPage = ({ options, selectHandler, page }) => {
+const MainPage = ({ options, selectHandler, page, option }) => {
   const [isLoading, setLoading] = useState(false);
   const dispatch = useDispatch();
-  let optionDefault = "animals";
 
   const setInStoreGetedData = async (option, page) => {
     setLoading(true);
@@ -25,7 +24,7 @@ const MainPage = ({ options, selectHandler, page }) => {
     setLoading(false);
   };
   useEffect(() => {
-    setInStoreGetedData(optionDefault, page);
+    setInStoreGetedData(option, page);
   }, [page]);
 
   return (

@@ -4,7 +4,8 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import "./App.css";
 import { setData, setIsFetching } from "./redux/actions/dataActions";
-import { Hearts } from "react-loader-spinner";
+import Loader from "./components/Loader";
+
 
 function App() {
   const [option, setOption] = useState("animals");
@@ -44,10 +45,11 @@ function App() {
   return (
     <div className="App">
       {isFetching ? (
-        <Hearts color="red" height={80} width={80} />
+        <Loader></Loader>
       ) : (
         <MainPage
           options={options}
+          option={option}
           selectHandler={selectHandler}
           page={page}
           setPage={setPage}
