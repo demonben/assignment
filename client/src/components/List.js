@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import Item from "./Item";
 
 const List = () => {
-  const data = useSelector((state) => state.allData.data);
+  const data = useSelector((state) => state.store.data);
   return (
     <div className="list">
       {data.data &&
