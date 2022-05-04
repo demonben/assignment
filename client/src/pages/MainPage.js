@@ -7,11 +7,9 @@ import List from "../components/List";
 import Loader from "../components/Loader";
 import Select from "react-select";
 
-const MainPage = ({ options, selectHandler, page, setPage }) => {
+const MainPage = ({ options, selectHandler, page }) => {
   const [isLoading, setLoading] = useState(false);
   const dispatch = useDispatch();
-  let firstPage = 1;
-  let lastPage = 55;
   let optionDefault = "animals";
 
   const setInStoreGetedData = async (option, page) => {
@@ -24,21 +22,18 @@ const MainPage = ({ options, selectHandler, page, setPage }) => {
     } catch (e) {
       console.log(e);
     }
-
     setLoading(false);
   };
   useEffect(() => {
     setInStoreGetedData(optionDefault, page);
   }, [page]);
 
-  // TODO: MAKE COMPONENT WITH BUTTONS
-  // TODO: REMOVE DEFINE WITH CAPITALS_ NUMBERS
   return (
     <div>
       <Select options={options} onChange={selectHandler} />
       <List />
       <div>
-        <Buttons/>
+        <Buttons />
         <Loader />
       </div>
     </div>
