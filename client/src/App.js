@@ -17,6 +17,10 @@ function App() {
     { value: "animals", label: "animals" },
     { value: "Sport", label: "Sport" },
     { value: "work", label: "work" },
+    { value: "architecture", label: "architecture" },
+    { value: "plants", label: "plants" },
+    { value: "art", label: "art" },
+    { value: "birds", label: "birds" },
   ];
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
