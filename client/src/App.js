@@ -9,9 +9,8 @@ import Loader from "./components/Loader";
 
 function App() {
   const [option, setOption] = useState("animals");
+  const page = useSelector((state) => state.store.page);
   const isFetching = useSelector((state) => state.store.isFetching);
-
-  const [page, setPage] = useState(1);
   const dispatch = useDispatch();
 
   const options = [
@@ -52,7 +51,6 @@ function App() {
           option={option}
           selectHandler={selectHandler}
           page={page}
-          setPage={setPage}
         ></MainPage>
       )}
     </div>

@@ -15,6 +15,7 @@ const Buttons = ({ setLoading }) => {
 
   const nextPageHandler = () => {
     dispatch(setPageNumber(page + 1));
+
     setInStoreGetedData(optionDefault, page);
   };
   const prevPageHandler = () => {
@@ -36,8 +37,7 @@ const Buttons = ({ setLoading }) => {
   };
   return (
     <div>
-      <Stack spacing={2} direction="row" justifyContent="center"
->
+      <Stack spacing={2} direction="row" justifyContent="center">
         {page <= LAST_PAGE && (
           <Button onClick={nextPageHandler} variant="contained">
             NEXT
