@@ -31,7 +31,7 @@ const MainPage = ({ options, selectHandler, page, option }) => {
     <div>
       <Select options={options} onChange={selectHandler} />
       <List />
-      <div>{!isLoading ? <Buttons setLoading={setLoading} /> : <Loader />}</div>
+      <div>{!isLoading ? <Buttons setLoading={setLoading} option={option} /> : <Loader />}</div>
     </div>
   );
 };

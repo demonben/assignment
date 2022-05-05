@@ -5,10 +5,9 @@ import { setPageNumber, setData } from "../redux/actions/dataActions";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 
-const Buttons = ({ setLoading }) => {
+const Buttons = ({ setLoading, option }) => {
   const page = useSelector((state) => state.store.page);
   const dispatch = useDispatch();
-  let optionDefault = "animals";
 
   let FIRST_PAGE = 1;
   let LAST_PAGE = 55;
@@ -16,11 +15,11 @@ const Buttons = ({ setLoading }) => {
   const nextPageHandler = () => {
     dispatch(setPageNumber(page + 1));
 
-    setInStoreGetedData(optionDefault, page);
+    setInStoreGetedData(option, page);
   };
   const prevPageHandler = () => {
     dispatch(setPageNumber(page - 1));
-    setInStoreGetedData(optionDefault, page);
+    setInStoreGetedData(option, page);
   };
 
   const setInStoreGetedData = async (option, page) => {
