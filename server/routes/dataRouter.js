@@ -1,5 +1,5 @@
 const express = require("express");
-const gettingData = require("../util/getingData");
+const gettingData = require("../api/getingData");
 
 const router = express.Router();
 
